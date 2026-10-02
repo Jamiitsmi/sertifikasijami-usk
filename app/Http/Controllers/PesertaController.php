@@ -18,8 +18,7 @@ class PesertaController extends Controller
                     $sub->where('nama', 'like', "%{$search}%")
                         ->orWhere('email', 'like', "%{$search}%")
                         ->orWhere('telepon', 'like', "%{$search}%")
-                        ->orWhereHas('skema', fn($s) =>
-                            $s->where('nama_skema', 'like', "%{$search}%")
+                        ->orWhereHas('skema', fn ($s) => $s->where('nama_skema', 'like', "%{$search}%")
                         );
                 });
             })
@@ -33,16 +32,18 @@ class PesertaController extends Controller
     public function create()
     {
         $skemas = SkemaSertifikasi::orderBy('nama_skema')->get();
+
         return view('peserta.create', compact('skemas'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:pesertas,email',
-            'telepon'  => 'nullable|string|max:20',
-            'alamat'   => 'nullable|string',
+            'nik'  => 'required|string|digits:16|unique:pesertas,nik',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:pesertas,email',
+            'telepon' => 'required|string|digits:12',
+            'alamat' => 'required|string',
             'skema_id' => 'required|exists:skema_sertifikasis,id',
         ]);
 
@@ -55,22 +56,25 @@ class PesertaController extends Controller
     public function show(Peserta $peserta)
     {
         $peserta->load('skema');
+
         return view('peserta.show', compact('peserta'));
     }
 
     public function edit(Peserta $peserta)
     {
         $skemas = SkemaSertifikasi::orderBy('nama_skema')->get();
+
         return view('peserta.edit', compact('peserta', 'skemas'));
     }
 
     public function update(Request $request, Peserta $peserta)
     {
         $validated = $request->validate([
-            'nama'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:pesertas,email,' . $peserta->id,
-            'telepon'  => 'nullable|string|max:20',
-            'alamat'   => 'nullable|string',
+            'nik'  => 'required|string|digits:16|unique:pesertas,nik,'.$peserta->id,
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:pesertas,email,'.$peserta->id,
+            'telepon' => 'required|string|digits:12',
+            'alamat' => 'required|string',
             'skema_id' => 'required|exists:skema_sertifikasis,id',
         ]);
 
@@ -83,6 +87,7 @@ class PesertaController extends Controller
     public function destroy(Peserta $peserta)
     {
         $peserta->delete();
+
         return redirect()->route('peserta.index')
             ->with('success', 'Data peserta berhasil dihapus.');
     }

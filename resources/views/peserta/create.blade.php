@@ -2,7 +2,7 @@
 @section('title', 'Tambah Peserta')
 @section('content')
 
-<h3 class="mb-3">Tambah Peserta</h3>
+<h3 class="text-white mb-3">Tambah Peserta</h3>
 
 <div class="card border-0 shadow-sm">
     <div class="card-body">

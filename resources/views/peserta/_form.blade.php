@@ -1,4 +1,15 @@
 <div class="mb-3">
+    <label class="form-label">NIK <span class="text-danger">*</span></label>
+    <input type="text" name="nik"
+           value="{{ old('nik', $peserta->nik ?? '') }}"
+           class="form-control @error('nik') is-invalid @enderror"
+           placeholder="Contoh: 8228492748271837"
+           maxlength="16">
+    @error('nik') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
+
+
+<div class="mb-3">
     <label class="form-label">Nama <span class="text-danger">*</span></label>
     <input type="text" name="nama"
            value="{{ old('nama', $peserta->nama ?? '') }}"

@@ -27,14 +27,19 @@
         <table class="table table-hover mb-0 align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>#</th><th>Nama</th><th>Email</th>
-                    <th>Telepon</th><th>Skema</th><th width="200">Aksi</th>
-                </tr>
+                    <th>#</th>
+                    <th>NIK</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Telepon</th>
+                    <th>Skema</th>
+                    <th width="200">Aksi</th>
             </thead>
             <tbody>
                 @forelse($pesertas as $i => $p)
                 <tr>
                     <td>{{ $pesertas->firstItem() + $i }}</td>
+                    <td>{{ $p->nik }}</td>
                     <td>{{ $p->nama }}</td>
                     <td>{{ $p->email }}</td>
                     <td>{{ $p->telepon ?? '-' }}</td>
@@ -58,7 +63,7 @@
                     </td>
                 </tr>
                 @empty
-                <tr><td colspan="6" class="text-center text-muted py-4">Data tidak ditemukan</td></tr>
+                <tr><td colspan="7" class="text-center text-muted py-4">Data tidak ditemukan</td></tr>
                 @endforelse
             </tbody>
         </table>

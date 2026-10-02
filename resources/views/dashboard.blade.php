@@ -30,6 +30,7 @@
        style="--bs-table-bg: transparent; --bs-table-color: #fff;">
             <thead>
                 <tr>
+                    <th cclass="text-white-50">Nik</th>
                     <th class="text-white-50">Nama</th>
                     <th class="text-white-50">Email</th>
                     <th class="text-white-50">Skema</th>
@@ -38,6 +39,7 @@
             <tbody>
                 @forelse($pesertaTerbaru as $p)
                     <tr>
+                        <td>{{ $p->nik }}</td>
                         <td>{{ $p->nama }}</td>
                         <td>{{ $p->email }}</td>
                         <td>{{ $p->skema->nama_skema ?? '-' }}</td>

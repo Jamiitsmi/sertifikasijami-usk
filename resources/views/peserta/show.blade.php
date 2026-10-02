@@ -7,6 +7,7 @@
 <div class="card border-0 shadow-sm">
     <div class="card-body">
         <table class="table table-borderless mb-0">
+            <tr><th width="200">NIK</th><td>{{ $peserta->nik }}</td></tr>
             <tr><th width="200">Nama</th><td>{{ $peserta->nama }}</td></tr>
             <tr><th>Email</th><td>{{ $peserta->email }}</td></tr>
             <tr><th>Telepon</th><td>{{ $peserta->telepon ?? '-' }}</td></tr>
