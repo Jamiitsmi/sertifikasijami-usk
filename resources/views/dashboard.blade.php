@@ -30,7 +30,7 @@
        style="--bs-table-bg: transparent; --bs-table-color: #fff;">
             <thead>
                 <tr>
-                    <th cclass="text-white-50">Nik</th>
+                    <th class="text-white-50">Nik</th>
                     <th class="text-white-50">Nama</th>
                     <th class="text-white-50">Email</th>
                     <th class="text-white-50">Skema</th>
